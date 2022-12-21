@@ -1,6 +1,5 @@
 package com.azakamu.sbomdisplayer.adapters.database.datatransfer;
 
-import com.azakamu.sbomdisplayer.domain.Version;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +25,5 @@ public class ProjectDTO {
   private Long id;
   private String name;
   @Relationship(type = "dependsOn")
-  private List<Version> dependencies;
+  private List<VersionDTO> dependencies;
 }
