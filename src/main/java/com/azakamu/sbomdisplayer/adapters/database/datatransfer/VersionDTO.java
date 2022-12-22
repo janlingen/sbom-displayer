@@ -20,6 +20,7 @@ public class VersionDTO {
 
   @RelationshipId
   private Long id;
+  private String version;
   @TargetNode
   private DependencyDTO dependency;
 }
