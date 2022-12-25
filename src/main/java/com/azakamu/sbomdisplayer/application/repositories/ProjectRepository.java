@@ -2,7 +2,6 @@ package com.azakamu.sbomdisplayer.application.repositories;
 
 import com.azakamu.sbomdisplayer.domain.Project;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author janlingen
