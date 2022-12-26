@@ -24,6 +24,6 @@ public class ProjectDTO {
   @GeneratedValue
   private Long id;
   private String name;
-  @Relationship(type = "dependsOn")
+  @Relationship(type = "DEPENDS_ON")
   private List<VersionDTO> dependencies;
 }
