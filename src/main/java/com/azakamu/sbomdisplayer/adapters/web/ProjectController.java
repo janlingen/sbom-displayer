@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller()
 public class ProjectController {
 
-  
-
   @GetMapping("/projects")
-  private String getAllProjects(){
+  private String getAllProjects() {
 
     return "projects";
   }
