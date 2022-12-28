@@ -36,20 +36,20 @@ public class SBomService {
     for (HashMap<String, Object> dependency : dependenciesRaw) {
       Dependency currentDependency;
       if (dependencyService.getDependenciesByName(
-          dependency.getOrDefault("name", "dummyName").toString()).isEmpty() ||
+          dependency.getOrDefault("name", "n/a").toString()).isEmpty() ||
           dependencyService.getDependenciesByName(
-              dependency.getOrDefault("name", "dummyName").toString()) == null) {
+              dependency.getOrDefault("name", "n/a").toString()) == null) {
         currentDependency = dependencyService.createDependency(
-            dependency.getOrDefault("name", "dummyName").toString(),
-            dependency.getOrDefault("publisher", "dummyPublisher").toString(),
-            dependency.getOrDefault("group", "dummyGroup").toString(),
-            dependency.getOrDefault("description", "dummyDescription").toString());
+            dependency.getOrDefault("name", "n/a").toString(),
+            dependency.getOrDefault("publisher", "n/a").toString(),
+            dependency.getOrDefault("group", "n/a").toString(),
+            dependency.getOrDefault("description", "n/a").toString());
       } else {
         currentDependency = dependencyService.getDependenciesByName(
-            dependency.getOrDefault("name", "dummyName").toString()).get(0);
+            dependency.getOrDefault("name", "n/a").toString()).get(0);
       }
       dependencies.add(new Version(null,
-          dependency.getOrDefault("version", "dummyVersion").toString(), currentDependency));
+          dependency.getOrDefault("version", "n/a").toString(), currentDependency));
     }
     return dependencies;
   }
