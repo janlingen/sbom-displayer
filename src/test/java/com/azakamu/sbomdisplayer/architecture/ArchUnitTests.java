@@ -12,9 +12,9 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.library.GeneralCodingRules;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author janlingen
@@ -57,7 +57,7 @@ public class ArchUnitTests {
           .withOptionalLayers(true)
           .domainModels("..domain..")
           .applicationServices("..application..")
-          .adapter("web", "..adapters.web.controller..")
+          .adapter("web", "..adapters.web..")
           .adapter("database", "..adapters.database..");
 
   // Custom rules
@@ -66,16 +66,8 @@ public class ArchUnitTests {
   // Classes ending with Dao should reside in package dataaccess
   @ArchTest
   static final ArchRule daosMustResideInDataaccessPackage =
-      classes().that().haveNameMatching(".*Dao").should().resideInAPackage("..dataaccess..")
+      classes().that().haveNameMatching(".*DAO").should().resideInAPackage("..dataaccess..")
           .as("DataAccessObjects should reside in a package '..dataaccess..'");
-
-//  // Classes annotated with @Entity or @Embeddable should reside in package datatransfer
-//  @ArchTest
-//  static final ArchRule dtosMustResideInDatatransferPackage =
-//      classes().that().areAnnotatedWith(Entity.class).or().areAnnotatedWith(Embeddable.class)
-//          .should()
-//          .resideInAPackage("..datatransfer..")
-//          .as("DataTransferObjects should reside in a package '..datatransfer..'");
 
   // No interface should have Interface in its name
   @ArchTest
@@ -129,41 +121,19 @@ public class ArchUnitTests {
           .and()
           .areNotInterfaces()
           .and()
-          .resideInAPackage("..adapters.web.controller..")
+          .resideInAPackage("..adapters.web..")
           .should()
-          .beMetaAnnotatedWith(Controller.class);
+          .beMetaAnnotatedWith(Controller.class).orShould()
+          .beMetaAnnotatedWith(RestController.class);
 
   // Classes that reside in package controller should have the suffix Service
   @ArchTest
   static final ArchRule controllerClassSuffix =
       classes()
-          .that().resideInAPackage("..adapters.web.controller..")
+          .that().resideInAPackage("..adapters.web..")
           .and().areAnnotatedWith(Controller.class)
           .should().haveSimpleNameEndingWith("Controller")
           .as("The end of the name of a controller class should be Controller");
-
-  // Classes that are top level classes and not interfaces
-  // and reside in package configuration should be annotated with @Configuration
-  @ArchTest
-  static final ArchRule configurationClassesAnnotation =
-      classes()
-          .that()
-          .areTopLevelClasses()
-          .and()
-          .areNotInterfaces()
-          .and()
-          .resideInAPackage("..configuration..")
-          .should()
-          .beMetaAnnotatedWith(Configuration.class);
-
-  // Classes that reside in package configuration should have the suffix Service
-  @ArchTest
-  static final ArchRule configurationClassSuffix =
-      classes()
-          .that().resideInAPackage("..configuration..")
-          .and().areAnnotatedWith(Configuration.class)
-          .should().haveSimpleNameEndingWith("Configuration")
-          .as("The end of the name of a configuration class should be Configuration");
 
   // Classes that are top level classes and reside in package application.repositories
   // should be interfaces
