@@ -3,12 +3,14 @@ package com.azakamu.sbomdisplayer.adapters.database.mapper;
 import com.azakamu.sbomdisplayer.adapters.database.datatransfer.DependencyDTO;
 import com.azakamu.sbomdisplayer.domain.Dependency;
 import java.util.List;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
 /**
  * @author janlingen
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",
+    injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface DependencyMapper {
 
   Dependency toDomain(DependencyDTO dependencyDTO);

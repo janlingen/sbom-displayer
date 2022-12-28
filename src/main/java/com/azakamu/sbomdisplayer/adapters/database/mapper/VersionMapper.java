@@ -3,12 +3,15 @@ package com.azakamu.sbomdisplayer.adapters.database.mapper;
 import com.azakamu.sbomdisplayer.adapters.database.datatransfer.VersionDTO;
 import com.azakamu.sbomdisplayer.domain.Version;
 import java.util.List;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
 /**
  * @author janlingen
  */
-@Mapper(componentModel = "spring", uses = {DependencyMapper.class})
+@Mapper(componentModel = "spring",
+    injectionStrategy = InjectionStrategy.CONSTRUCTOR, uses = {
+    DependencyMapper.class})
 public interface VersionMapper {
 
   Version toDomain(VersionDTO versionDTO);
