@@ -12,6 +12,4 @@ public interface ProjectRepository {
 
   List<Project> getAllProjects();
 
-  List<Project> getProjectsByName(String name);
-
 }

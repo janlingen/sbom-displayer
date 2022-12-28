@@ -21,4 +21,8 @@ public class ProjectService {
     return projectRepository.saveProject(new Project(null, name, dependencies));
   }
 
+  public List<Project> getAllProjects() {
+    return projectRepository.getAllProjects();
+  }
+
 }

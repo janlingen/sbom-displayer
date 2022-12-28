@@ -4,6 +4,7 @@ import com.azakamu.sbomdisplayer.adapters.database.dataaccess.ProjectDAO;
 import com.azakamu.sbomdisplayer.adapters.database.mapper.ProjectMapper;
 import com.azakamu.sbomdisplayer.application.repositories.ProjectRepository;
 import com.azakamu.sbomdisplayer.domain.Project;
+import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -25,11 +26,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
   @Override
   public List<Project> getAllProjects() {
-    return null;
-  }
-
-  @Override
-  public List<Project> getProjectsByName(String name) {
-    return null;
+    List<Project> projects = mapper.toDomainList(dao.findAll());
+    return projects == null ? Collections.emptyList() : projects;
   }
 }
