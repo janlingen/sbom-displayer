@@ -1,13 +1,11 @@
 package com.azakamu.sbomdisplayer.adapters.database.implementation;
 
 import com.azakamu.sbomdisplayer.adapters.database.dataaccess.ProjectDAO;
-import com.azakamu.sbomdisplayer.adapters.database.mapper.DependencyMapper;
 import com.azakamu.sbomdisplayer.adapters.database.mapper.ProjectMapper;
 import com.azakamu.sbomdisplayer.application.repositories.ProjectRepository;
 import com.azakamu.sbomdisplayer.domain.Project;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class ProjectRepositoryImpl implements ProjectRepository {
 
   private final ProjectDAO dao;
-  private final ProjectMapper mapper = Mappers.getMapper(ProjectMapper.class);;
+  private final ProjectMapper mapper;
 
   @Override
   public Project saveProject(Project project) {
