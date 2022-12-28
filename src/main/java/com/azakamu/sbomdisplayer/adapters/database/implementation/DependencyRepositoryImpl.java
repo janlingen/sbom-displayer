@@ -4,6 +4,7 @@ import com.azakamu.sbomdisplayer.adapters.database.dataaccess.DependencyDAO;
 import com.azakamu.sbomdisplayer.adapters.database.mapper.DependencyMapper;
 import com.azakamu.sbomdisplayer.application.repositories.DependencyRepository;
 import com.azakamu.sbomdisplayer.domain.Dependency;
+import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -25,11 +26,13 @@ public class DependencyRepositoryImpl implements DependencyRepository {
 
   @Override
   public List<Dependency> getAllDependencies() {
-    return mapper.toDomainList(dao.findAll());
+    List<Dependency> dependencies = mapper.toDomainList(dao.findAll());
+    return dependencies == null ? Collections.emptyList() : dependencies;
   }
 
   @Override
   public List<Dependency> getDependenciesByName(String name) {
-    return mapper.toDomainList(dao.findAllByName(name));
+    List<Dependency> dependencies = mapper.toDomainList(dao.findAllByName(name));
+    return dependencies == null ? Collections.emptyList() : dependencies;
   }
 }

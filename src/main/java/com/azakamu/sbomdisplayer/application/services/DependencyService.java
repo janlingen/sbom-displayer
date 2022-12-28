@@ -26,4 +26,10 @@ public class DependencyService {
     return dependencyRepository.getDependenciesByName(name);
   }
 
+  public List<Dependency> getAllDependencies() {
+    return dependencyRepository.getAllDependencies();
+  }
+
+
+
 }
