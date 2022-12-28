@@ -25,4 +25,8 @@ public class ProjectService {
     return projectRepository.getAllProjects();
   }
 
+  public Project getProjectById(Long id) {
+    return projectRepository.getProjectById(id);
+  }
+
 }

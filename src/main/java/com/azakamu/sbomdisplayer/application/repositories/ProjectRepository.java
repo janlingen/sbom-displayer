@@ -12,4 +12,6 @@ public interface ProjectRepository {
 
   List<Project> getAllProjects();
 
+  Project getProjectById(Long id);
+
 }

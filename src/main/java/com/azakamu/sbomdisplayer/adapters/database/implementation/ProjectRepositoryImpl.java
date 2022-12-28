@@ -1,6 +1,7 @@
 package com.azakamu.sbomdisplayer.adapters.database.implementation;
 
 import com.azakamu.sbomdisplayer.adapters.database.dataaccess.ProjectDAO;
+import com.azakamu.sbomdisplayer.adapters.database.datatransfer.ProjectDTO;
 import com.azakamu.sbomdisplayer.adapters.database.mapper.ProjectMapper;
 import com.azakamu.sbomdisplayer.application.repositories.ProjectRepository;
 import com.azakamu.sbomdisplayer.domain.Project;
@@ -29,4 +30,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     List<Project> projects = mapper.toDomainList(dao.findAll());
     return projects == null ? Collections.emptyList() : projects;
   }
+
+  @Override
+  public Project getProjectById(Long id) {
+    return mapper.toDomain(dao.findById(id).orElse(new ProjectDTO()));
+  }
+
 }

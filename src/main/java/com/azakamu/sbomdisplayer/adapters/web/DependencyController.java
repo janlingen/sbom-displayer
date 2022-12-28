@@ -17,7 +17,7 @@ public class DependencyController {
   private final DependencyService dependencyService;
 
   @GetMapping("/dependencies")
-  public String getAllDependencies(Model model){
+  public String getAllDependencies(Model model) {
     model.addAttribute("dependencies", dependencyService.getAllDependencies());
     return "dependencies";
   }
