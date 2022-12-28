@@ -4,12 +4,11 @@ import com.azakamu.sbomdisplayer.adapters.database.datatransfer.VersionDTO;
 import com.azakamu.sbomdisplayer.domain.Version;
 import java.util.List;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 
 /**
  * @author janlingen
  */
-@Mapper(uses = {DependencyMapper.class})
+@Mapper(componentModel = "spring", uses = {DependencyMapper.class})
 public interface VersionMapper {
 
   Version toDomain(VersionDTO versionDTO);
