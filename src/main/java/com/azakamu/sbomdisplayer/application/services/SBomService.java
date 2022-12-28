@@ -31,7 +31,7 @@ public class SBomService {
 
   private List<Version> parseProjectDependenciesGradle(String sbom) {
     List<HashMap<String, Object>> dependenciesRaw = JsonPath.read(sbom, "$.components");
-    List<Version> dependencies = new ArrayList();
+    List<Version> dependencies = new ArrayList<>();
 
     for (HashMap<String, Object> dependency : dependenciesRaw) {
       Dependency currentDependency;
