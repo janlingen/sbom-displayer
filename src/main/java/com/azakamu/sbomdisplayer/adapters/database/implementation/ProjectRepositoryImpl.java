@@ -36,4 +36,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     return mapper.toDomain(dao.findById(id).orElse(new ProjectDTO()));
   }
 
+  @Override
+  public List<Project> getAllProjectsDependingOn(String name) {
+    List<Project> projects = mapper.toDomainList(dao.findAll());
+    return projects == null ? Collections.emptyList() : projects;
+  }
+
 }

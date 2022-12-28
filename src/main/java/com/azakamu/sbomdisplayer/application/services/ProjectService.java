@@ -29,4 +29,8 @@ public class ProjectService {
     return projectRepository.getProjectById(id);
   }
 
+  public List<Project> getAllProjectsDependingOn(String name) {
+    return projectRepository.getAllProjectsDependingOn(name);
+  }
+
 }

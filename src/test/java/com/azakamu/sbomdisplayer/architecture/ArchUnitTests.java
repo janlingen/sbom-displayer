@@ -12,8 +12,6 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.library.GeneralCodingRules;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -71,13 +69,13 @@ public class ArchUnitTests {
       classes().that().haveNameMatching(".*Dao").should().resideInAPackage("..dataaccess..")
           .as("DataAccessObjects should reside in a package '..dataaccess..'");
 
-  // Classes annotated with @Entity or @Embeddable should reside in package datatransfer
-  @ArchTest
-  static final ArchRule dtosMustResideInDatatransferPackage =
-      classes().that().areAnnotatedWith(Entity.class).or().areAnnotatedWith(Embeddable.class)
-          .should()
-          .resideInAPackage("..datatransfer..")
-          .as("DataTransferObjects should reside in a package '..datatransfer..'");
+//  // Classes annotated with @Entity or @Embeddable should reside in package datatransfer
+//  @ArchTest
+//  static final ArchRule dtosMustResideInDatatransferPackage =
+//      classes().that().areAnnotatedWith(Entity.class).or().areAnnotatedWith(Embeddable.class)
+//          .should()
+//          .resideInAPackage("..datatransfer..")
+//          .as("DataTransferObjects should reside in a package '..datatransfer..'");
 
   // No interface should have Interface in its name
   @ArchTest

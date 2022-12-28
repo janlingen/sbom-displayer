@@ -24,9 +24,17 @@ public class ProjectController {
     return "projects";
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/id/{id}")
   private String getAllProjects(@PathVariable Long id, Model model) {
     model.addAttribute("project", projectService.getProjectById(id));
     return "detail-project";
+  }
+
+  @GetMapping("/depending-on/{dependency}")
+  public String getAllProjectsDependingOn(@PathVariable String dependency, Model model) {
+    model.addAttribute("projects", projectService.getAllProjectsDependingOn(dependency));
+    model.addAttribute("dependency", dependency);
+    return "projects-dependency";
+
   }
 }

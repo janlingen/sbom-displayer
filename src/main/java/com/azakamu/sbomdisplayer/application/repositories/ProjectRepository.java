@@ -14,4 +14,6 @@ public interface ProjectRepository {
 
   Project getProjectById(Long id);
 
+  List<Project> getAllProjectsDependingOn(String name);
+
 }
