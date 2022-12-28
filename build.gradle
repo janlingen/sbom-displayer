@@ -24,15 +24,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.tngtech.archunit:archunit-junit5:0.23.1'
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'com.jayway.jsonpath:json-path:2.7.0'
-    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
-
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
-
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
