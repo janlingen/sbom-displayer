@@ -16,4 +16,6 @@ public interface ProjectRepository {
 
   List<Project> getAllProjectsDependingOn(String name);
 
+  void removeProject(Long id);
+
 }

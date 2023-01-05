@@ -21,6 +21,10 @@ public class ProjectService {
     return projectRepository.saveProject(new Project(null, name, dependencies));
   }
 
+  public void removeProject(Long id) {
+    projectRepository.removeProject(id);
+  }
+
   public List<Project> getAllProjects() {
     return projectRepository.getAllProjects();
   }
