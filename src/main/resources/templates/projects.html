@@ -33,6 +33,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Dependencies</th>
+        <th>Remove</th>
       </tr>
       </thead>
       <tbody th:remove="all-but-first">
@@ -49,7 +50,11 @@
         </td>
         <td>
           <a class="btn btn-primary btn-sm"
-             th:href="'/projects/' + ${project.id()}">Dependencies</a>
+             th:href="'/projects/depending-on/' + ${project.id()}">Dependencies</a>
+        </td>
+        <td>
+          <a class="btn btn-danger btn-sm"
+             th:href="'/projects/remove/' + ${project.id()}">Remove</a>
         </td>
       </tr>
       </tbody>

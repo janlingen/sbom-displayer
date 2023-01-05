@@ -42,4 +42,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     return projects == null ? Collections.emptyList() : projects;
   }
 
+  @Override
+  public void removeProject(Long id) {
+    dao.deleteById(id);
+  }
+
 }

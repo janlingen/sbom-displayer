@@ -24,6 +24,12 @@ public class ProjectController {
     return "projects";
   }
 
+  @GetMapping("/remove/{id}")
+  private String removeProject(@PathVariable Long id) {
+    projectService.removeProject(id);
+    return "redirect:/projects";
+  }
+
   @GetMapping("/id/{id}")
   private String getAllProjects(@PathVariable Long id, Model model) {
     model.addAttribute("project", projectService.getProjectById(id));
