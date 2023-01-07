@@ -33,7 +33,8 @@ public class DependencyServiceTest {
     Dependency expected = new Dependency(null, "name", "publisher", "group", "description");
     when(mockDependencyRepository.saveDependency(any(Dependency.class)))
         .thenReturn(expected);
-    Dependency actual = dependencyService.createDependency("name", "publisher", "group", "description");
+    Dependency actual = dependencyService.createDependency("name", "publisher", "group",
+        "description");
     verify(mockDependencyRepository).saveDependency(expected);
     assertEquals(expected, actual);
   }
