@@ -12,26 +12,23 @@ import com.azakamu.sbomdisplayer.domain.Project;
 import com.azakamu.sbomdisplayer.domain.Version;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * @author janlingen
  */
+@ExtendWith(MockitoExtension.class)
 public class ProjectServiceTest {
 
   @Mock
   private ProjectRepository mockProjectRepository;
 
+  @InjectMocks
   private ProjectService projectService;
-
-  @BeforeEach
-  public void setUp() {
-    MockitoAnnotations.openMocks(this);
-    projectService = new ProjectService(mockProjectRepository);
-  }
 
   @Test
   public void testCreateProject() {
