@@ -1,4 +1,4 @@
-package com.azakamu.sbomdisplayer.services;
+package com.azakamu.sbomdisplayer.unitTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -28,7 +28,7 @@ public class SBomServiceTest {
 
   @Test
   void testParseProjectNameGradle() {
-    String sbom = "{\"metadata\":{\"component\":{\"name\":\"test-project\"}}}";
+    String sbom = "{\"metadata\":{\"component\":{\"name\":\"test-project\"}}, \"components\": []}";
     String expected = "test-project";
     String actual = sbomService.parseProjectNameGradle(sbom);
     assertEquals(expected, actual);

@@ -1,4 +1,4 @@
-package com.azakamu.sbomdisplayer.services;
+package com.azakamu.sbomdisplayer.unitTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
