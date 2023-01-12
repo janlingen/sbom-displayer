@@ -22,7 +22,6 @@ import org.springframework.test.context.DynamicPropertySource;
  * @author janlingen
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@Slf4j
 public class SBomControllerTest {
 
   @LocalServerPort
