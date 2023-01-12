@@ -55,7 +55,12 @@ public class SBomControllerTest {
   @Test
   void pushSBomTest1() {
     String url = "http://localhost:" + port + "/sbom";
-    String sbom = "{\"metadata\":{\"component\":{\"name\":\"test-project\"}}, \"components\": []}";
+    String sbom = "{\"metadata\":{\"component\":{\"name\":\"test-project\"}}, \"components\": [{\n"
+        + "            \"publisher\": \"Pivotal Software, Inc.\",\n"
+        + "            \"group\": \"org.springframework.boot\",\n"
+        + "            \"name\": \"spring-boot-starter-web\",\n"
+        + "            \"version\": \"2.7.1\",\n"
+        + "            \"description\": \"Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container\"}]}";
     ResponseEntity<String> response = testRestTemplate.postForEntity(url, new HttpEntity<>(sbom),
         String.class);
     System.out.println(response.getBody());
