@@ -2,9 +2,9 @@ package com.azakamu.sbomdisplayer.e2eTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.neo4j.harness.Neo4j;
 import org.neo4j.harness.Neo4jBuilders;
@@ -34,8 +34,7 @@ public class SBomControllerTest {
 
   @BeforeAll
   static void initializeNeo4j() {
-    embeddedDb = Neo4jBuilders.newInProcessBuilder()
-        .withDisabledServer()//disable http server
+    embeddedDb = Neo4jBuilders.newInProcessBuilder().withDisabledServer()//disable http server
         .build();
   }
 
@@ -52,6 +51,7 @@ public class SBomControllerTest {
   }
 
   @Test
+  @DisplayName("Push valid sbom, expect 200 OK")
   void pushSBomTest1() {
     String url = "http://localhost:" + port + "/sbom";
     String sbom = "{\"metadata\":{\"component\":{\"name\":\"test-project\"}}, \"components\": [{\n"
@@ -64,6 +64,29 @@ public class SBomControllerTest {
         String.class);
     System.out.println(response.getBody());
     assertEquals(200, response.getStatusCodeValue());
+  }
+
+  @Test
+  @DisplayName("Push invalid sbom, expect 400 BAD REQUEST")
+  void pushSBomTest2() {
+    String url = "http://localhost:" + port + "/sbom";
+    String sbom = "";
+    ResponseEntity<String> response = testRestTemplate.postForEntity(url, new HttpEntity<>(sbom),
+        String.class);
+    System.out.println(response.getBody());
+    assertEquals(400, response.getStatusCodeValue());
+  }
+
+  // this test needs to be made obsolete: catch this!
+  @Test
+  @DisplayName("Create internal server error")
+  void pushSBomTest3() {
+    String url = "http://localhost:" + port + "/sbom";
+    String sbom = "hello";
+    ResponseEntity<String> response = testRestTemplate.postForEntity(url, new HttpEntity<>(sbom),
+        String.class);
+    System.out.println(response.getBody());
+    assertEquals(500, response.getStatusCodeValue());
   }
 
 }

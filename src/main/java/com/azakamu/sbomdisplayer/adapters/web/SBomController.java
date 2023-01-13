@@ -18,6 +18,7 @@ public class SBomController {
 
   @PostMapping("/sbom")
   public Project pushSBom(@RequestBody String sbom) {
+    System.out.println(sbom);
     return sBomService.parseSbomGradle(sbom);
   }
 
