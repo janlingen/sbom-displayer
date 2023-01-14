@@ -8,6 +8,7 @@ import com.azakamu.sbomdisplayer.domain.Project;
 import com.azakamu.sbomdisplayer.domain.Version;
 import java.util.List;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.neo4j.harness.Neo4j;
@@ -42,13 +43,19 @@ public class ProjectServiceTest {
     registry.add("spring.neo4j.authentication.password", () -> null);
   }
 
+  @AfterEach()
+  void clearNeo4j(){
+    embeddedDb.defaultDatabaseService().executeTransactionally("MATCH (n) DETACH DELETE n");
+  }
+
+
   @AfterAll
   static void stopNeo4j() {
     embeddedDb.close();
   }
 
   @Test
-  public void testCreateProject() {
+  public void testCreateProject1() {
     String name = "test-project";
     List<Version> dependencies = List.of(
         new Version(1L, "2.0.0", new Dependency(1L, "test", "test", "test", "test"))
@@ -58,6 +65,17 @@ public class ProjectServiceTest {
     assertEquals(project.name(), result.name());
     assertEquals(project.dependencies(), result.dependencies());
     assertEquals(projectService.getAllProjects().size(), 1);
+  }
+
+  @Test
+  public void testRemoveProject1() {
+    String name = "test-project";
+    List<Version> dependencies = List.of(
+        new Version(1L, "2.0.0", new Dependency(1L, "test", "test", "test", "test"))
+    );
+    Project result = projectService.createProject(name, dependencies);
+    projectService.removeProject(result.id());
+    assertEquals(projectService.getAllProjects().size(), 0);
   }
 
 }
