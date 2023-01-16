@@ -23,6 +23,11 @@
 </div>
 <div class="container">
   <h2>Dependencies</h2>
+    <form method="post" th:action="@{/search}">
+      <input type="text" placeholder="name" th:name="name">
+      <input type="text" placeholder="version" th:name="version">
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
   <p class="alert alert-dark" id="alert1" th:if="${dependencies.size() == 0}">There are currently no
     dependencies!</p>
   <div>

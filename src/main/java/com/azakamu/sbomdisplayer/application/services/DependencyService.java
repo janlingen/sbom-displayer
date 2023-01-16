@@ -30,5 +30,9 @@ public class DependencyService {
     return dependencyRepository.getAllDependencies();
   }
 
+  public List<Dependency> getDependenciesContaining(String name, String version) {
+    return dependencyRepository.getDependenciesContaining(name, version);
+  }
+
 
 }

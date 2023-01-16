@@ -35,4 +35,11 @@ public class DependencyRepositoryImpl implements DependencyRepository {
     List<Dependency> dependencies = mapper.toDomainList(dao.findAllByName(name));
     return dependencies == null ? Collections.emptyList() : dependencies;
   }
+
+
+  @Override
+  public List<Dependency> getDependenciesContaining(String name, String version) {
+    List<Dependency> dependencies = mapper.toDomainList(dao.findDependenciesContaining(name, version));
+    return dependencies == null ? Collections.emptyList() : dependencies;
+  }
 }

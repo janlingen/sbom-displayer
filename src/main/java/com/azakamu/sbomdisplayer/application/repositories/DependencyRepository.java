@@ -14,4 +14,6 @@ public interface DependencyRepository {
 
   List<Dependency> getDependenciesByName(String name);
 
+  List<Dependency> getDependenciesContaining(String name, String version);
+
 }
